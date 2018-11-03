@@ -3,7 +3,7 @@ Developed at Vandy Hacks V
 
 Contributors:
 
-Cory Nelson, Programmer
-Brandon Hunter, Programmer
-Reana Gibson, Artist
-Stephanie York, UI Design & Audio
+Brandon Hunter, Programmer</br>
+Cory Nelson, Programmer</br>
+Reana Gibson, Artist</br>
+Stephanie York, Artist</br>
