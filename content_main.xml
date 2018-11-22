@@ -46,72 +46,79 @@
 
     <Button
         android:id="@+id/button3"
+        android:onClick="add_Tile"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="162dp"
+        android:layout_marginStart="166dp"
         android:layout_marginTop="133dp" />
      <!--
      Row 2
      -->
     <Button
         android:id="@+id/button4"
+        android:onClick="add_Tile"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="209dp" />
+        android:layout_marginTop="217dp" />
 
     <Button
         android:id="@+id/button5"
+        android:onClick="add_Tile"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="83dp"
-        android:layout_marginTop="209dp"
+        android:layout_marginTop="217dp"
         />
 
     <Button
         android:id="@+id/button6"
+        android:onClick="add_Tile"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="209dp"
+        android:layout_marginStart="166dp"
+        android:layout_marginTop="217dp"
         />
     <!--
     Row 3
     -->
     <Button
         android:id="@+id/button7"
+        android:onClick="add_Tile"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="285dp" />
+        android:layout_marginTop="301dp" />
 
     <Button
         android:id="@+id/button8"
+        android:onClick="add_Tile"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="83dp"
-        android:layout_marginTop="285dp" />
+        android:layout_marginTop="301dp" />
 
     <Button
         android:id="@+id/button9"
+        android:onClick="add_Tile"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="285dp"
+        android:layout_marginStart="166dp"
+        android:layout_marginTop="301dp"
         />
 
     <Button
