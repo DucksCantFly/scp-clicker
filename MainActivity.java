@@ -109,6 +109,12 @@ public class MainActivity extends FragmentActivity {
                 btn2.setEnabled(false);
                 Tiles[1] = true;
                 break;
+                
+            case(R.id.button3):
+                btn2.setBackgroundColor(Color.BLUE);
+                btn2.setEnable(false);
+                Tiles[2] = true;
+                break;
 
         }
         counter = counter - 55;
