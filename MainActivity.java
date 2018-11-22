@@ -24,7 +24,7 @@ public class MainActivity extends FragmentActivity {
     //Boolean tiled1, tiled2, tiled3, tiled4, tiled5, tiled6, tiled7, tiled8, tiled9;
     Boolean[] Tiles = new Boolean[9];
     double tileCost = 50;
-    double counter = 50;
+    double counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,15 +109,51 @@ public class MainActivity extends FragmentActivity {
                 btn2.setEnabled(false);
                 Tiles[1] = true;
                 break;
-                
+
             case(R.id.button3):
-                btn2.setBackgroundColor(Color.BLUE);
-                btn2.setEnable(false);
+                btn3.setBackgroundColor(Color.BLUE);
+                btn3.setEnabled(false);
                 Tiles[2] = true;
                 break;
 
+            case(R.id.button4):
+                btn4.setBackgroundColor(Color.BLUE);
+                btn4.setEnabled(false);
+                Tiles[3] = true;
+                break;
+
+            case(R.id.button5):
+                btn5.setBackgroundColor(Color.BLUE);
+                btn5.setEnabled(false);
+                Tiles[4] = true;
+                break;
+
+            case(R.id.button6):
+                btn6.setBackgroundColor(Color.BLUE);
+                btn6.setEnabled(false);
+                Tiles[5] = true;
+                break;
+
+            case(R.id.button7):
+                btn7.setBackgroundColor(Color.BLUE);
+                btn7.setEnabled(false);
+                Tiles[6] = true;
+                break;
+
+            case(R.id.button8):
+                btn8.setBackgroundColor(Color.BLUE);
+                btn8.setEnabled(false);
+                Tiles[7] = true;
+                break;
+            case(R.id.button9):
+                btn9.setBackgroundColor(Color.BLUE);
+                btn9.setEnabled(false);
+                Tiles[8] = true;
+                break;
+
+
         }
-        counter = counter - 55;
+        counter = counter - tileCost;
         tileCost = tileCost + 50;
         if(Tiles[0] == false)
             btn1.setEnabled(false);
@@ -137,10 +173,8 @@ public class MainActivity extends FragmentActivity {
             btn8.setEnabled(false);
         if(Tiles[8] == false)
             btn9.setEnabled(false);
-        if(counter < tileCost){
-            Buildbtn.setVisibility(View.INVISIBLE);
+        if(counter < tileCost)
             Buildbtn.setEnabled(false);
-        }
         showCount.setText(Double.toString(counter));
     }
 }
