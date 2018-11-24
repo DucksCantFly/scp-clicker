@@ -1,5 +1,5 @@
 # scp-clicker
-Developed at Vandy Hacks V
+Developed by students at Middle Tennessee State University.
 
 Contributors:
 
