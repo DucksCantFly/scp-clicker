@@ -24,7 +24,7 @@ public class MainActivity extends FragmentActivity {
     //Boolean tiled1, tiled2, tiled3, tiled4, tiled5, tiled6, tiled7, tiled8, tiled9;
     Boolean[] Tiles = new Boolean[9];
     double tileCost = 50;
-    double counter = 50;
+    double counter = 50; //tracks value
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
