@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Arrays;
@@ -21,10 +22,9 @@ public class MainActivity extends FragmentActivity {
     ViewPager viewPager;
     TextView showCount;
     Button Tapbtn, Buildbtn, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
-    //Boolean tiled1, tiled2, tiled3, tiled4, tiled5, tiled6, tiled7, tiled8, tiled9;
     Boolean[] Tiles = new Boolean[9];
     double tileCost = 50;
-    double counter = 50; //tracks value 2
+    double counter = 50;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
