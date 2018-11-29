@@ -29,8 +29,7 @@ Maroon Background
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/maroon_vector"/>
-
-
+    
     <!--
     Black Square
     -->
@@ -103,7 +102,7 @@ Maroon Background
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="217dp"
-        android:background="@drawable/shadowperson_icon"/>
+        />
 
     <Button
         android:id="@+id/button5"
@@ -114,7 +113,7 @@ Maroon Background
         android:layout_alignParentTop="true"
         android:layout_marginStart="83dp"
         android:layout_marginTop="217dp"
-        android:background="@drawable/creeper_icon"
+
         />
 
     <Button
