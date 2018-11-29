@@ -24,14 +24,8 @@ public class MainActivity extends FragmentActivity {
     ViewPager viewPager;
     TextView showCount;
     Button Tapbtn, Buildbtn, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
-    //Button [] Monster = new Button[3];
-    class Tile
-    {
-        public boolean isBuilt = false;
-        public boolean hasMonster = false;
-    };
-
-    Tile [] Floor = new Tile[9];
+    boolean[] Monster = new boolean[9];
+    boolean[] Tiles = new boolean[9];
     double tileCost = 50;
     double monsterCost = 100;
     double counter = 50;
@@ -40,17 +34,17 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Tapbtn = (Button) findViewById(R.id.the_tap);
-        Buildbtn = (Button) findViewById(R.id.tile_build);
-        btn1 = (Button) findViewById(R.id.button1);
-        btn2 = (Button) findViewById(R.id.button2);
-        btn3 = (Button) findViewById(R.id.button3);
-        btn4 = (Button) findViewById(R.id.button4);
-        btn5 = (Button) findViewById(R.id.button5);
-        btn6 = (Button) findViewById(R.id.button6);
-        btn7 = (Button) findViewById(R.id.button7);
-        btn8 = (Button) findViewById(R.id.button8);
-        btn9 = (Button) findViewById(R.id.button9);
+        Tapbtn = findViewById(R.id.the_tap);
+        Buildbtn = findViewById(R.id.tile_build);
+        btn1 = findViewById(R.id.button1);
+        btn2 = findViewById(R.id.button2);
+        btn3 = findViewById(R.id.button3);
+        btn4 = findViewById(R.id.button4);
+        btn5 = findViewById(R.id.button5);
+        btn6 = findViewById(R.id.button6);
+        btn7 = findViewById(R.id.button7);
+        btn8 = findViewById(R.id.button8);
+        btn9 = findViewById(R.id.button9);
         Buildbtn.setVisibility(View.INVISIBLE);
         Buildbtn.setEnabled(false);
         btn1.setEnabled(false);
@@ -63,7 +57,7 @@ public class MainActivity extends FragmentActivity {
         btn8.setEnabled(false);
         btn9.setEnabled(false);
 
-        showCount = (TextView) findViewById(R.id.counter);
+        showCount = findViewById(R.id.counter);
         /*
         Attempt to make part of the screen swipe
         viewPager = (ViewPager) findViewById(R.id.my_pager);
@@ -80,111 +74,107 @@ public class MainActivity extends FragmentActivity {
             Buildbtn.setVisibility(View.VISIBLE);
             Buildbtn.setEnabled(true);
         }
-        if(counter >= monsterCost){
-
-        }
-
         showCount.setText(Double.toString(counter));
         }
 
 
     public void onBuild(View view) {
-        if(!Floor[0].isBuilt)
+        if(!Tiles[0])
             btn1.setEnabled(true);
-        if(!Floor[1].isBuilt)
+        if(!Tiles[1])
             btn2.setEnabled(true);
-        if(!Floor[2].isBuilt)
+        if(!Tiles[2])
             btn3.setEnabled(true);
-        if(!Floor[3].isBuilt)
+        if(!Tiles[3])
             btn4.setEnabled(true);
-        if(!Floor[4].isBuilt)
+        if(!Tiles[4])
             btn5.setEnabled(true);
-        if(!Floor[5].isBuilt)
+        if(!Tiles[5])
             btn6.setEnabled(true);
-        if(!Floor[6].isBuilt)
+        if(!Tiles[6])
             btn7.setEnabled(true);
-        if(!Floor[7].isBuilt)
+        if(!Tiles[7])
             btn8.setEnabled(true);
-        if(!Floor[8].isBuilt)
+        if(!Tiles[8])
             btn9.setEnabled(true);
     }
 
     public void add_Tile(View view) {
         switch(view.getId()){
             case(R.id.button1):
-                btn1.setBackgroundColor(Color.BLUE);
+                btn1.setBackgroundColor(Color.GRAY);
                 btn1.setEnabled(false);
-                Floor[0].isBuilt = true;
+                Tiles[0] = true;
                 break;
 
             case(R.id.button2):
-                btn2.setBackgroundColor(Color.BLUE);
+                btn2.setBackgroundColor(Color.GRAY);
                 btn2.setEnabled(false);
-                Floor[1].isBuilt = true;
+                Tiles[1] = true;
                 break;
 
             case(R.id.button3):
-                btn3.setBackgroundColor(Color.BLUE);
+                btn3.setBackgroundColor(Color.GRAY);
                 btn3.setEnabled(false);
-                Floor[2].isBuilt = true;
+                Tiles[2] = true;
                 break;
 
             case(R.id.button4):
-                btn4.setBackgroundColor(Color.BLUE);
+                btn4.setBackgroundColor(Color.GRAY);
                 btn4.setEnabled(false);
-                Floor[3].isBuilt = true;
+                Tiles[3] = true;
                 break;
 
             case(R.id.button5):
-                btn5.setBackgroundColor(Color.BLUE);
+                btn5.setBackgroundColor(Color.GRAY);
                 btn5.setEnabled(false);
-                Floor[4].isBuilt = true;
+                Tiles[4] = true;
                 break;
 
             case(R.id.button6):
-                btn6.setBackgroundColor(Color.BLUE);
+                btn6.setBackgroundColor(Color.GRAY);
                 btn6.setEnabled(false);
-                Floor[5].isBuilt = true;
+                Tiles[5] = true;
                 break;
 
             case(R.id.button7):
-                btn7.setBackgroundColor(Color.BLUE);
+                btn7.setBackgroundColor(Color.GRAY);
                 btn7.setEnabled(false);
-                Floor[6].isBuilt = true;
+                Tiles[6] = true;
                 break;
 
             case(R.id.button8):
-                btn8.setBackgroundColor(Color.BLUE);
+                btn8.setBackgroundColor(Color.GRAY);
                 btn8.setEnabled(false);
-                Floor[7].isBuilt = true;
+                Tiles[7] = true;
                 break;
             case(R.id.button9):
-                btn9.setBackgroundColor(Color.BLUE);
+                btn9.setBackgroundColor(Color.GRAY);
                 btn9.setEnabled(false);
-                Floor[8].isBuilt = true;
+                Tiles[8] = true;
                 break;
 
 
         }
         counter = counter - tileCost;
         tileCost = tileCost + 50;
-        if(!Floor[0].isBuilt)
+        if(!Tiles[0])
             btn1.setEnabled(false);
-        if(!Floor[1].isBuilt)
+        if(!Tiles[1])
             btn2.setEnabled(false);
-        if(!Floor[2].isBuilt)
+        if(!Tiles[2])
             btn3.setEnabled(false);
-        if(!Floor[3].isBuilt)
+        if(!Tiles[3])
             btn4.setEnabled(false);
-        if(!Floor[4].isBuilt)
+        if(!Tiles[4])
             btn5.setEnabled(false);
-        if(!Floor[5].isBuilt)
+        if(!Tiles[5])
             btn6.setEnabled(false);
-        if(!Floor[6].isBuilt)
+        if(!Tiles[6])
             btn7.setEnabled(false);
-        if(!Floor[7].isBuilt)
+        if(!Tiles[7])
             btn8.setEnabled(false);
-        if(!Floor[8].isBuilt)
+        if(!Tiles[8])
             btn9.setEnabled(false);
         if(counter < tileCost)
             Buildbtn.setEnabled(false);
@@ -192,25 +182,23 @@ public class MainActivity extends FragmentActivity {
     }
 
     public void creeper(View view) {
-        if(!Floor[0].hasMonster)
+        if(!Monster[0])
             btn1.setEnabled(true);
-        if(!Floor[1].hasMonster)
+        if(!Monster[1])
             btn2.setEnabled(true);
-        if(!Floor[2].hasMonster)
+        if(!Monster[2])
             btn3.setEnabled(true);
-        if(!Floor[3].hasMonster)
+        if(!Monster[3])
             btn4.setEnabled(true);
-        if(!Floor[4].hasMonster)
+        if(!Monster[4])
             btn5.setEnabled(true);
-        if(!Floor[5].hasMonster)
+        if(!Monster[5])
             btn6.setEnabled(true);
-        if(!Floor[6].hasMonster)
+        if(!Monster[6])
             btn7.setEnabled(true);
-        if(!Floor[7].hasMonster)
+        if(!Monster[7])
             btn8.setEnabled(true);
-        if(!Floor[8].hasMonster)
+        if(!Monster[8])
             btn9.setEnabled(true);
-
-
     }
 }
