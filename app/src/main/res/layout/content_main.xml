@@ -28,7 +28,7 @@ Maroon Background
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/maroon_Vector_Clipart"/>
+        android:background="@drawable/maroon_vector"/>
 
 
     <!--
@@ -102,7 +102,8 @@ Maroon Background
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="217dp" />
+        android:layout_marginTop="217dp"
+        android:background="@drawable/shadowperson_icon"/>
 
     <Button
         android:id="@+id/button5"
@@ -113,6 +114,7 @@ Maroon Background
         android:layout_alignParentTop="true"
         android:layout_marginStart="83dp"
         android:layout_marginTop="217dp"
+        android:background="@drawable/creeper_icon"
         />
 
     <Button
@@ -181,6 +183,15 @@ Maroon Background
         android:layout_alignParentEnd="true"
         android:layout_marginTop="73dp"
         android:text="@string/tile" />
+
+    <Button
+        android:id="@+id/creeper_btn"
+        android:onClick="creeper"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button1"
+        android:layout_alignParentEnd="true"
+        android:text="Creeper"/>
 
     <TextView
         android:id="@+id/textView"

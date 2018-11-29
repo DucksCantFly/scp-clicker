@@ -16,21 +16,30 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.sql.Struct;
 import java.util.Arrays;
 
 public class MainActivity extends FragmentActivity {
     ViewPager viewPager;
     TextView showCount;
     Button Tapbtn, Buildbtn, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
-    Boolean[] Tiles = new Boolean[9];
+    //Button [] Monster = new Button[3];
+    class Tile
+    {
+        public boolean isBuilt = false;
+        public boolean hasMonster = false;
+    };
+
+    Tile [] Floor = new Tile[9];
     double tileCost = 50;
+    double monsterCost = 100;
     double counter = 50;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Arrays.fill(Tiles, Boolean.FALSE);
         Tapbtn = (Button) findViewById(R.id.the_tap);
         Buildbtn = (Button) findViewById(R.id.tile_build);
         btn1 = (Button) findViewById(R.id.button1);
@@ -71,29 +80,32 @@ public class MainActivity extends FragmentActivity {
             Buildbtn.setVisibility(View.VISIBLE);
             Buildbtn.setEnabled(true);
         }
+        if(counter >= monsterCost){
+
+        }
 
         showCount.setText(Double.toString(counter));
         }
 
 
     public void onBuild(View view) {
-        if(Tiles[0] == false)
+        if(!Floor[0].isBuilt)
             btn1.setEnabled(true);
-        if(Tiles[1] == false)
+        if(!Floor[1].isBuilt)
             btn2.setEnabled(true);
-        if(Tiles[2] == false)
+        if(!Floor[2].isBuilt)
             btn3.setEnabled(true);
-        if(Tiles[3] == false)
+        if(!Floor[3].isBuilt)
             btn4.setEnabled(true);
-        if(Tiles[4] == false)
+        if(!Floor[4].isBuilt)
             btn5.setEnabled(true);
-        if(Tiles[5] == false)
+        if(!Floor[5].isBuilt)
             btn6.setEnabled(true);
-        if(Tiles[6] == false)
+        if(!Floor[6].isBuilt)
             btn7.setEnabled(true);
-        if(Tiles[7] == false)
+        if(!Floor[7].isBuilt)
             btn8.setEnabled(true);
-        if(Tiles[8] == false)
+        if(!Floor[8].isBuilt)
             btn9.setEnabled(true);
     }
 
@@ -102,80 +114,103 @@ public class MainActivity extends FragmentActivity {
             case(R.id.button1):
                 btn1.setBackgroundColor(Color.BLUE);
                 btn1.setEnabled(false);
-                Tiles[0] = true;
+                Floor[0].isBuilt = true;
                 break;
 
             case(R.id.button2):
                 btn2.setBackgroundColor(Color.BLUE);
                 btn2.setEnabled(false);
-                Tiles[1] = true;
+                Floor[1].isBuilt = true;
                 break;
 
             case(R.id.button3):
                 btn3.setBackgroundColor(Color.BLUE);
                 btn3.setEnabled(false);
-                Tiles[2] = true;
+                Floor[2].isBuilt = true;
                 break;
 
             case(R.id.button4):
                 btn4.setBackgroundColor(Color.BLUE);
                 btn4.setEnabled(false);
-                Tiles[3] = true;
+                Floor[3].isBuilt = true;
                 break;
 
             case(R.id.button5):
                 btn5.setBackgroundColor(Color.BLUE);
                 btn5.setEnabled(false);
-                Tiles[4] = true;
+                Floor[4].isBuilt = true;
                 break;
 
             case(R.id.button6):
                 btn6.setBackgroundColor(Color.BLUE);
                 btn6.setEnabled(false);
-                Tiles[5] = true;
+                Floor[5].isBuilt = true;
                 break;
 
             case(R.id.button7):
                 btn7.setBackgroundColor(Color.BLUE);
                 btn7.setEnabled(false);
-                Tiles[6] = true;
+                Floor[6].isBuilt = true;
                 break;
 
             case(R.id.button8):
                 btn8.setBackgroundColor(Color.BLUE);
                 btn8.setEnabled(false);
-                Tiles[7] = true;
+                Floor[7].isBuilt = true;
                 break;
             case(R.id.button9):
                 btn9.setBackgroundColor(Color.BLUE);
                 btn9.setEnabled(false);
-                Tiles[8] = true;
+                Floor[8].isBuilt = true;
                 break;
 
 
         }
         counter = counter - tileCost;
         tileCost = tileCost + 50;
-        if(Tiles[0] == false)
+        if(!Floor[0].isBuilt)
             btn1.setEnabled(false);
-        if(Tiles[1] == false)
+        if(!Floor[1].isBuilt)
             btn2.setEnabled(false);
-        if(Tiles[2] == false)
+        if(!Floor[2].isBuilt)
             btn3.setEnabled(false);
-        if(Tiles[3] == false)
+        if(!Floor[3].isBuilt)
             btn4.setEnabled(false);
-        if(Tiles[4] == false)
+        if(!Floor[4].isBuilt)
             btn5.setEnabled(false);
-        if(Tiles[5] == false)
+        if(!Floor[5].isBuilt)
             btn6.setEnabled(false);
-        if(Tiles[6] == false)
+        if(!Floor[6].isBuilt)
             btn7.setEnabled(false);
-        if(Tiles[7] == false)
+        if(!Floor[7].isBuilt)
             btn8.setEnabled(false);
-        if(Tiles[8] == false)
+        if(!Floor[8].isBuilt)
             btn9.setEnabled(false);
         if(counter < tileCost)
             Buildbtn.setEnabled(false);
         showCount.setText(Double.toString(counter));
+    }
+
+    public void creeper(View view) {
+        if(!Floor[0].hasMonster)
+            btn1.setEnabled(true);
+        if(!Floor[1].hasMonster)
+            btn2.setEnabled(true);
+        if(!Floor[2].hasMonster)
+            btn3.setEnabled(true);
+        if(!Floor[3].hasMonster)
+            btn4.setEnabled(true);
+        if(!Floor[4].hasMonster)
+            btn5.setEnabled(true);
+        if(!Floor[5].hasMonster)
+            btn6.setEnabled(true);
+        if(!Floor[6].hasMonster)
+            btn7.setEnabled(true);
+        if(!Floor[7].hasMonster)
+            btn8.setEnabled(true);
+        if(!Floor[8].hasMonster)
+            btn9.setEnabled(true);
+
+
     }
 }
