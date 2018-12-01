@@ -23,6 +23,7 @@ import java.util.Arrays;
 public class MainActivity extends FragmentActivity {
     ViewPager viewPager;
     TextView showCount;
+    TextView screen;
     Button Tapbtn, Buildbtn, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
     boolean[] Monster = new boolean[9];
     boolean[] Tiles = new boolean[9];
@@ -34,6 +35,7 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        screen = findViewById(R.id.prompt);
         Tapbtn = findViewById(R.id.the_tap);
         Buildbtn = findViewById(R.id.tile_build);
         btn1 = findViewById(R.id.button1);
@@ -75,10 +77,13 @@ public class MainActivity extends FragmentActivity {
             Buildbtn.setEnabled(true);
         }
         showCount.setText(Double.toString(counter));
+        screen.setVisibility(View.INVISIBLE);
         }
 
 
     public void onBuild(View view) {
+        screen.setVisibility(View.VISIBLE);
+        screen.setText(R.string.Tile_prompt);
         if(!Tiles[0])
             btn1.setEnabled(true);
         if(!Tiles[1])
@@ -105,53 +110,63 @@ public class MainActivity extends FragmentActivity {
                 btn1.setBackgroundColor(Color.GRAY);
                 btn1.setEnabled(false);
                 Tiles[0] = true;
+                screen.setText(R.string.Tile_prompt2);
                 break;
 
             case(R.id.button2):
                 btn2.setBackgroundColor(Color.GRAY);
                 btn2.setEnabled(false);
                 Tiles[1] = true;
+                screen.setText(R.string.Tile_prompt2);
                 break;
 
             case(R.id.button3):
                 btn3.setBackgroundColor(Color.GRAY);
                 btn3.setEnabled(false);
                 Tiles[2] = true;
+                screen.setText(R.string.Tile_prompt2);
                 break;
 
             case(R.id.button4):
                 btn4.setBackgroundColor(Color.GRAY);
                 btn4.setEnabled(false);
                 Tiles[3] = true;
+                screen.setText(R.string.Tile_prompt2);
                 break;
 
             case(R.id.button5):
                 btn5.setBackgroundColor(Color.GRAY);
                 btn5.setEnabled(false);
                 Tiles[4] = true;
+                screen.setText(R.string.Tile_prompt2);
                 break;
 
             case(R.id.button6):
                 btn6.setBackgroundColor(Color.GRAY);
                 btn6.setEnabled(false);
                 Tiles[5] = true;
+                screen.setText(R.string.Tile_prompt2);
                 break;
 
             case(R.id.button7):
                 btn7.setBackgroundColor(Color.GRAY);
                 btn7.setEnabled(false);
                 Tiles[6] = true;
+                screen.setText(R.string.Tile_prompt2);
                 break;
 
             case(R.id.button8):
                 btn8.setBackgroundColor(Color.GRAY);
                 btn8.setEnabled(false);
                 Tiles[7] = true;
+                screen.setText(R.string.Tile_prompt2);
                 break;
+
             case(R.id.button9):
                 btn9.setBackgroundColor(Color.GRAY);
                 btn9.setEnabled(false);
                 Tiles[8] = true;
+                screen.setText(R.string.Tile_prompt2);
                 break;
 
 
