@@ -24,12 +24,13 @@ public class MainActivity extends FragmentActivity {
     ViewPager viewPager;
     TextView showCount;
     TextView screen;
-    Button Tapbtn, Buildbtn, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
+    Button Tapbtn, Buildbtn, creep_btn, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
     boolean[] Monster = new boolean[9];
     boolean[] Tiles = new boolean[9];
     double tileCost = 50;
     double monsterCost = 100;
     double counter = 50;
+   public static int monsterID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class MainActivity extends FragmentActivity {
         screen = findViewById(R.id.prompt);
         Tapbtn = findViewById(R.id.the_tap);
         Buildbtn = findViewById(R.id.tile_build);
+        creep_btn = findViewById(R.id.creeper_btn);
         btn1 = findViewById(R.id.button1);
         btn2 = findViewById(R.id.button2);
         btn3 = findViewById(R.id.button3);
@@ -47,7 +49,11 @@ public class MainActivity extends FragmentActivity {
         btn7 = findViewById(R.id.button7);
         btn8 = findViewById(R.id.button8);
         btn9 = findViewById(R.id.button9);
+
         Buildbtn.setVisibility(View.INVISIBLE);
+        creep_btn.setVisibility(View.INVISIBLE);
+
+        creep_btn.setEnabled(false);
         Buildbtn.setEnabled(false);
         btn1.setEnabled(false);
         btn2.setEnabled(false);
@@ -75,6 +81,10 @@ public class MainActivity extends FragmentActivity {
         if (counter >= tileCost) {
             Buildbtn.setVisibility(View.VISIBLE);
             Buildbtn.setEnabled(true);
+        }
+        if(counter >= monsterCost){
+            creep_btn.setVisibility(View.VISIBLE);
+            creep_btn.setEnabled(true);
         }
         showCount.setText(Double.toString(counter));
         screen.setVisibility(View.INVISIBLE);
@@ -107,25 +117,43 @@ public class MainActivity extends FragmentActivity {
     public void add_Tile(View view) {
         switch(view.getId()){
             case(R.id.button1):
-                btn1.setBackgroundColor(Color.GRAY);
-                btn1.setEnabled(false);
-                Tiles[0] = true;
-                screen.setText(R.string.Tile_prompt2);
-                break;
+                if(!Tiles[0] && !Monster[0]) {
+                    btn1.setBackgroundColor(Color.GRAY);
+                    btn1.setEnabled(false);
+                    Tiles[0] = true;
+                    screen.setText(R.string.Tile_prompt2);
+                    break;
+                }
+                else if(Tiles[0] && !Monster[0]) {
+                    placeMonster(monsterID);
+                    break;
+                }
 
             case(R.id.button2):
-                btn2.setBackgroundColor(Color.GRAY);
-                btn2.setEnabled(false);
-                Tiles[1] = true;
-                screen.setText(R.string.Tile_prompt2);
-                break;
+                if(!Tiles[1] && !Monster[1]) {
+                    btn2.setBackgroundColor(Color.GRAY);
+                    btn2.setEnabled(false);
+                    Tiles[1] = true;
+                    screen.setText(R.string.Tile_prompt2);
+                    break;
+                }
+                else if(Tiles[1] && !Monster[1]) {
+                    placeMonster(monsterID);
+                    break;
+                }
 
             case(R.id.button3):
-                btn3.setBackgroundColor(Color.GRAY);
-                btn3.setEnabled(false);
-                Tiles[2] = true;
-                screen.setText(R.string.Tile_prompt2);
-                break;
+                if(!Tiles[2] && !Monster[2]) {
+                    btn3.setBackgroundColor(Color.GRAY);
+                    btn3.setEnabled(false);
+                    Tiles[2] = true;
+                    screen.setText(R.string.Tile_prompt2);
+                    break;
+                }
+                else if(Tiles[2] && !Monster[2]) {
+                    placeMonster(monsterID);
+                    break;
+                }
 
             case(R.id.button4):
                 btn4.setBackgroundColor(Color.GRAY);
@@ -196,24 +224,38 @@ public class MainActivity extends FragmentActivity {
         showCount.setText(Double.toString(counter));
     }
 
-    public void creeper(View view) {
-        if(!Monster[0])
+    private void placeMonster(int mID) {
+        switch(mID){
+            case(R.id.creeper_btn):
+                btn1.setBackgroundResource(R.drawable.creeper_icon2);
+                counter = counter - monsterCost;
+                break;
+        }
+        monsterCost = monsterCost + 50;
+        if(counter < monsterCost)
+            creep_btn.setEnabled(false);
+    }
+
+    public int creeper(View view) {
+        monsterID = view.getId();
+        if(Tiles[0] && !Monster[0])
             btn1.setEnabled(true);
-        if(!Monster[1])
+        if(Tiles[1] && !Monster[1])
             btn2.setEnabled(true);
-        if(!Monster[2])
+        if(Tiles[2] && !Monster[2])
             btn3.setEnabled(true);
-        if(!Monster[3])
+        if(Tiles[3] && !Monster[3])
             btn4.setEnabled(true);
-        if(!Monster[4])
+        if(Tiles[4] && !Monster[4])
             btn5.setEnabled(true);
-        if(!Monster[5])
+        if(Tiles[5] && !Monster[5])
             btn6.setEnabled(true);
-        if(!Monster[6])
+        if(Tiles[6] && !Monster[6])
             btn7.setEnabled(true);
-        if(!Monster[7])
+        if(Tiles[7] && !Monster[7])
             btn8.setEnabled(true);
-        if(!Monster[8])
+        if(Tiles[8] && !Monster[8])
             btn9.setEnabled(true);
+        return monsterID;
     }
 }
