@@ -125,7 +125,6 @@ Maroon Background
         android:layout_alignParentTop="true"
         android:layout_marginStart="83dp"
         android:layout_marginTop="217dp"
-
         />
 
     <Button
