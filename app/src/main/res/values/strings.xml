@@ -14,4 +14,6 @@
     </string>
     <string name="Tile_prompt">Select your tile to place your container.</string>
     <string name="Tile_prompt2">Container placement successful</string>
+    <string name="Creeper_prompt1">Place Creeper in a cantainer</string>
+    <string name="Creeper_prompt2">Creeper successfully contained</string>
 </resources>

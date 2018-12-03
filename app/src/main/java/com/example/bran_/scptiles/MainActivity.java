@@ -76,8 +76,8 @@ public class MainActivity extends FragmentActivity {
 
 
     public void IncreaseCount(View view) {
-        //counter++;
-        counter = counter + 50;
+        counter++;
+        //counter = counter + 50;
         if (counter >= tileCost) {
             Buildbtn.setVisibility(View.VISIBLE);
             Buildbtn.setEnabled(true);
@@ -123,6 +123,8 @@ public class MainActivity extends FragmentActivity {
                     btn1.setEnabled(false);
                     Tiles[0] = true;
                     screen.setText(R.string.Tile_prompt2);
+                    counter = counter - tileCost;
+                    tileCost = tileCost + 50;
                     break;
                 }
                 else if(Tiles[0] && !Monster[0]) {
@@ -137,12 +139,14 @@ public class MainActivity extends FragmentActivity {
                     btn2.setEnabled(false);
                     Tiles[1] = true;
                     screen.setText(R.string.Tile_prompt2);
+                    counter = counter - tileCost;
+                    tileCost = tileCost + 50;
                     break;
                 }
                 else if(Tiles[1] && !Monster[1]) {
-                    placeMonster(monsterID, R.id.button2);
-                    Monster[1] = false;
-                    break;
+                        placeMonster(monsterID, R.id.button2);
+                        Monster[1] = false;
+                        break;
                 }
 
             case(R.id.button3):
@@ -151,6 +155,8 @@ public class MainActivity extends FragmentActivity {
                     btn3.setEnabled(false);
                     Tiles[2] = true;
                     screen.setText(R.string.Tile_prompt2);
+                    counter = counter - tileCost;
+                    tileCost = tileCost + 50;
                     break;
                 }
                 else if(Tiles[2] && !Monster[2]) {
@@ -165,6 +171,8 @@ public class MainActivity extends FragmentActivity {
                     btn4.setEnabled(false);
                     Tiles[3] = true;
                     screen.setText(R.string.Tile_prompt2);
+                    counter = counter - tileCost;
+                    tileCost = tileCost + 50;
                     break;
                 }
                 else if(Tiles[3] && !Monster[3]){
@@ -179,6 +187,8 @@ public class MainActivity extends FragmentActivity {
                     btn5.setEnabled(false);
                     Tiles[4] = true;
                     screen.setText(R.string.Tile_prompt2);
+                    counter = counter - tileCost;
+                    tileCost = tileCost + 50;
                     break;
                 }
                 else if(Tiles[4] && !Monster[4]){
@@ -193,6 +203,8 @@ public class MainActivity extends FragmentActivity {
                     btn6.setEnabled(false);
                     Tiles[5] = true;
                     screen.setText(R.string.Tile_prompt2);
+                    counter = counter - tileCost;
+                    tileCost = tileCost + 50;
                     break;
                 }
                 else if(Tiles[5] && !Monster[5]){
@@ -207,6 +219,8 @@ public class MainActivity extends FragmentActivity {
                     btn7.setEnabled(false);
                     Tiles[6] = true;
                     screen.setText(R.string.Tile_prompt2);
+                    counter = counter - tileCost;
+                    tileCost = tileCost + 50;
                     break;
                 }
                 else if(Tiles[6] && !Monster[6]){
@@ -221,6 +235,8 @@ public class MainActivity extends FragmentActivity {
                     btn8.setEnabled(false);
                     Tiles[7] = true;
                     screen.setText(R.string.Tile_prompt2);
+                    counter = counter - tileCost;
+                    tileCost = tileCost + 50;
                     break;
                 }
                 else if(Tiles[7] && !Monster[7]){
@@ -235,6 +251,8 @@ public class MainActivity extends FragmentActivity {
                     btn9.setEnabled(false);
                     Tiles[8] = true;
                     screen.setText(R.string.Tile_prompt2);
+                    counter = counter - tileCost;
+                    tileCost = tileCost + 50;
                     break;
                 }
                 else if(Tiles[8] && !Monster[8]){
@@ -245,8 +263,6 @@ public class MainActivity extends FragmentActivity {
 
 
         }
-        counter = counter - tileCost;
-        tileCost = tileCost + 50;
         if(!Tiles[0])
             btn1.setEnabled(false);
         if(!Tiles[1])
@@ -267,36 +283,74 @@ public class MainActivity extends FragmentActivity {
             btn9.setEnabled(false);
         if(counter < tileCost)
             Buildbtn.setEnabled(false);
+        if(counter < monsterCost)
+            creep_btn.setEnabled(false);
         showCount.setText(Double.toString(counter));
     }
 
     /////////////////////////////////////////////////////
     //Where more monsters would be added/////////////////
     /////////////////////////////////////////////////////
+
+    //The placeMonster function passes two arguments; the monster button ID and the Button ID.
+    //The mID in the first switch statement is used to determine which monster button was clicked.
+    //The bID in the second switch statement is used to determine which button to place the monster icon on.
     private void placeMonster(int mID, int bID) {
         switch(mID){
             case(R.id.creeper_btn):
                 switch(bID) {
                     case (R.id.button1):
                         btn1.setBackgroundResource(R.drawable.creeper_icon2);
-                        counter = counter - monsterCost;
                         break;
 
                     case(R.id.button2):
                         btn2.setBackgroundResource(R.drawable.creeper_icon2);
-                        counter = counter - monsterCost;
+                        break;
+
+                    case(R.id.button3):
+                        btn3.setBackgroundResource(R.drawable.creeper_icon2);
+                        break;
+
+                    case(R.id.button4):
+                        btn4.setBackgroundResource(R.drawable.creeper_icon2);
+                        break;
+
+                    case(R.id.button5):
+                        btn5.setBackgroundResource(R.drawable.creeper_icon2);
+                        break;
+
+                    case(R.id.button6):
+                        btn6.setBackgroundResource(R.drawable.creeper_icon2);
+                        break;
+
+                    case(R.id.button7):
+                        btn7.setBackgroundResource(R.drawable.creeper_icon2);
+                        break;
+
+                    case(R.id.button8):
+                        btn8.setBackgroundResource(R.drawable.creeper_icon2);
+                        break;
+
+                    case(R.id.button9):
+                        btn9.setBackgroundResource(R.drawable.creeper_icon2);
                         break;
                 }
         }
+        screen.setText(getString(R.string.Creeper_prompt2));
+        counter = counter - monsterCost;
         monsterCost = monsterCost + 50;
         if(counter < monsterCost)
             creep_btn.setEnabled(false);
+        else
+            creep_btn.setEnabled(true);
     }
 
     /////////////////////////////////////////////////////////////////////////////
     //Creeper Monster button would enable all tiles that have a container built//
     /////////////////////////////////////////////////////////////////////////////
     public int creeper(View view) {
+        screen.setVisibility(View.VISIBLE);
+        screen.setText(getString(R.string.Creeper_prompt1));
         monsterID = view.getId();
         if(Tiles[0] && !Monster[0])
             btn1.setEnabled(true);
