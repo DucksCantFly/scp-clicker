@@ -13,6 +13,9 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".homescreen">
+            <meta-data android:name = "android.suppor.PARENT_ACTIVITY" android:value = "com.example.bran_.scptiles"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
