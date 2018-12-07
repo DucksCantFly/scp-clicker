@@ -19,6 +19,8 @@ import android.widget.TextView;
 import java.lang.reflect.Array;
 import java.sql.Struct;
 import java.util.Arrays;
+import java.util.*;
+import java.lang.*;
 
 public class MainActivity extends FragmentActivity {
     ViewPager viewPager;
@@ -31,6 +33,8 @@ public class MainActivity extends FragmentActivity {
     double monsterCost = 100; //Further development will call for a vector of ints for various monster costs
     double counter = 0;       //Tap Counter
     double incrementVal = 1;
+    double perSecondIncrement = 0;
+    long timer = System.currentTimeMillis();
 
     int matrix[][]  = new int[3][3]; // note: Tiles and Monsters fills a similar role. When refactoring code, account for that.
 
@@ -60,11 +64,13 @@ public class MainActivity extends FragmentActivity {
         btn7    btn8    btn9
          */
         //intialize matrix to zero
+        /*
         for(int i = 0; i < 3;i++){
             for(int j = 0; j<3;j++){
                 matrix[i][j] = 0;
             }
         }
+        */
 
 
         Buildbtn.setVisibility(View.INVISIBLE);
@@ -90,9 +96,16 @@ public class MainActivity extends FragmentActivity {
         viewPager.setAdapter(swipeAdapter);
         */
     }
-
+    //TODO Count Should Be Able to Increment Without Player Input
+    public void updatePerSecondIncrement(){
+       perSecondIncrement += 1;
+    }
 
     public void IncreaseCount(View view) {
+        if(System.currentTimeMillis() - timer > 1000){
+            timer = System.currentTimeMillis();
+            counter+= perSecondIncrement;
+        }
         counter += incrementVal;
         //counter = counter + 50;
         if (counter >= tileCost) {
@@ -105,7 +118,7 @@ public class MainActivity extends FragmentActivity {
         }
         showCount.setText(Double.toString(counter));
         screen.setVisibility(View.INVISIBLE);
-        }
+    }
 
 
     public void onBuild(View view) {
@@ -323,46 +336,55 @@ public class MainActivity extends FragmentActivity {
                 switch(bID) {
                     case (R.id.button1):
                         btn1.setBackgroundResource(R.drawable.creeper_icon2);
+                        matrix[0][0] = 1;
                         incrementVal += 1;
                         break;
 
                     case(R.id.button2):
                         btn2.setBackgroundResource(R.drawable.creeper_icon2);
+                        matrix[0][1] = 1;
                         incrementVal += 1;
                         break;
 
                     case(R.id.button3):
                         btn3.setBackgroundResource(R.drawable.creeper_icon2);
+                        matrix[0][2] = 1;
                         incrementVal += 1;
                         break;
 
                     case(R.id.button4):
                         btn4.setBackgroundResource(R.drawable.creeper_icon2);
+                        matrix[1][0] = 1;
                         incrementVal += 1;
                         break;
 
                     case(R.id.button5):
                         btn5.setBackgroundResource(R.drawable.creeper_icon2);
+                        matrix[1][1] = 1;
                         incrementVal += 1;
                         break;
 
                     case(R.id.button6):
                         btn6.setBackgroundResource(R.drawable.creeper_icon2);
+                        matrix[1][2] = 1;
                         incrementVal += 1;
                         break;
 
                     case(R.id.button7):
                         btn7.setBackgroundResource(R.drawable.creeper_icon2);
+                        matrix[2][0] = 1;
                         incrementVal += 1;
                         break;
 
                     case(R.id.button8):
                         btn8.setBackgroundResource(R.drawable.creeper_icon2);
+                        matrix[2][1] = 1;
                         incrementVal += 1;
                         break;
 
                     case(R.id.button9):
                         btn9.setBackgroundResource(R.drawable.creeper_icon2);
+                        matrix[2][2] = 1;
                         incrementVal += 1;
                         break;
                 }
