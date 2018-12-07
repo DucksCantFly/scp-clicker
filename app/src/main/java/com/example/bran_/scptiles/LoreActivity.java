@@ -1,3 +1,4 @@
+/*
 package com.example.bran_.scptiles;
 
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.Button;
 
 public class LoreActivity extends AppCompatActivity{
+
     ImageButton creepBtn, maskBtn, shadowBtn;
     ImageView selected;
     Button learnMore;
@@ -55,4 +57,6 @@ public class LoreActivity extends AppCompatActivity{
         // To Be added:
         //function to open browser and direct to assigned page.
     }
+
 }
+*/

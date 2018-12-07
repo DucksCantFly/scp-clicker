@@ -25,13 +25,16 @@ public class MainActivity extends FragmentActivity {
     TextView showCount;
     TextView screen;
     Button Tapbtn, Buildbtn, creep_btn, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
-    boolean[] Monster = new boolean[9];
+    boolean[] Monster = new boolean[9]; //TODO - Going forward we should agree on a naming convention.
     boolean[] Tiles = new boolean[9];
     double tileCost = 50;
-    double monsterCost = 100; //Further development will call for a vecter of ints for varoius monster cost
+    double monsterCost = 100; //Further development will call for a vector of ints for various monster costs
     double counter = 0;       //Tap Counter
-   public static int monsterID; //Use to identify which monster and tile button is active
+    double incrementVal = 1;
 
+    int matrix[][]  = new int[3][3]; // note: Tiles and Monsters fills a similar role. When refactoring code, account for that.
+
+   public static int monsterID; //Use to identify which monster and tile button is active
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +52,20 @@ public class MainActivity extends FragmentActivity {
         btn7 = findViewById(R.id.button7);
         btn8 = findViewById(R.id.button8);
         btn9 = findViewById(R.id.button9);
+
+        /*
+        GRID VIEW - used in Matrix
+        btn1    btn2    btn3
+        btn4    btn5    btn6
+        btn7    btn8    btn9
+         */
+        //intialize matrix to zero
+        for(int i = 0; i < 3;i++){
+            for(int j = 0; j<3;j++){
+                matrix[i][j] = 0;
+            }
+        }
+
 
         Buildbtn.setVisibility(View.INVISIBLE);
         creep_btn.setVisibility(View.INVISIBLE);
@@ -76,7 +93,7 @@ public class MainActivity extends FragmentActivity {
 
 
     public void IncreaseCount(View view) {
-        counter++;
+        counter += incrementVal;
         //counter = counter + 50;
         if (counter >= tileCost) {
             Buildbtn.setVisibility(View.VISIBLE);
@@ -94,16 +111,21 @@ public class MainActivity extends FragmentActivity {
     public void onBuild(View view) {
         screen.setVisibility(View.VISIBLE);
         screen.setText(R.string.Tile_prompt);
-        if(!Tiles[0])
+        if(!Tiles[0]) {
             btn1.setEnabled(true);
-        if(!Tiles[1])
+        }
+        if(!Tiles[1]) {
             btn2.setEnabled(true);
-        if(!Tiles[2])
+        }
+        if(!Tiles[2]) {
             btn3.setEnabled(true);
-        if(!Tiles[3])
+        }
+        if(!Tiles[3]) {
             btn4.setEnabled(true);
-        if(!Tiles[4])
+        }
+        if(!Tiles[4]) {
             btn5.setEnabled(true);
+        }
         if(!Tiles[5])
             btn6.setEnabled(true);
         if(!Tiles[6])
@@ -301,43 +323,55 @@ public class MainActivity extends FragmentActivity {
                 switch(bID) {
                     case (R.id.button1):
                         btn1.setBackgroundResource(R.drawable.creeper_icon2);
+                        incrementVal += 1;
                         break;
 
                     case(R.id.button2):
                         btn2.setBackgroundResource(R.drawable.creeper_icon2);
+                        incrementVal += 1;
                         break;
 
                     case(R.id.button3):
                         btn3.setBackgroundResource(R.drawable.creeper_icon2);
+                        incrementVal += 1;
                         break;
 
                     case(R.id.button4):
                         btn4.setBackgroundResource(R.drawable.creeper_icon2);
+                        incrementVal += 1;
                         break;
 
                     case(R.id.button5):
                         btn5.setBackgroundResource(R.drawable.creeper_icon2);
+                        incrementVal += 1;
                         break;
 
                     case(R.id.button6):
                         btn6.setBackgroundResource(R.drawable.creeper_icon2);
+                        incrementVal += 1;
                         break;
 
                     case(R.id.button7):
                         btn7.setBackgroundResource(R.drawable.creeper_icon2);
+                        incrementVal += 1;
                         break;
 
                     case(R.id.button8):
                         btn8.setBackgroundResource(R.drawable.creeper_icon2);
+                        incrementVal += 1;
                         break;
 
                     case(R.id.button9):
                         btn9.setBackgroundResource(R.drawable.creeper_icon2);
+                        incrementVal += 1;
                         break;
                 }
         }
         screen.setText(getString(R.string.Creeper_prompt2));
         counter = counter - monsterCost;
+        if(counter < 0){
+            counter = 0;
+        }
         monsterCost = monsterCost + 50;
         if(counter < monsterCost)
             creep_btn.setEnabled(false);
