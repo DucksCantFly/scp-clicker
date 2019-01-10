@@ -12,7 +12,7 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int i) {
-        Fragment fragment = new TilesFragment();
+        Fragment fragment = new TileFrag();
         Bundle bundle = new Bundle();
         bundle.putInt("count",i+1);
         fragment.setArguments(bundle);

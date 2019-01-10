@@ -3,9 +3,14 @@ package com.example.bran_.scptiles;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceDataStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -26,7 +31,7 @@ public class MainActivity extends FragmentActivity {
     ViewPager viewPager;
     TextView showCount;
     TextView screen;
-    Button Tapbtn, Buildbtn, creep_btn, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
+    Button Tapbtn, Buildbtn, creep_btn, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, nxt;
     boolean[] Monster = new boolean[9]; //TODO - Going forward we should agree on a naming convention.
     boolean[] Tiles = new boolean[9];
     double tileCost = 50;
@@ -38,7 +43,7 @@ public class MainActivity extends FragmentActivity {
 
     int matrix[][]  = new int[3][3]; // note: Tiles and Monsters fills a similar role. When refactoring code, account for that.
 
-   public static int monsterID; //Use to identify which monster and tile button is active
+    public static int monsterID; //Use to identify which monster and tile button is active
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +61,13 @@ public class MainActivity extends FragmentActivity {
         btn7 = findViewById(R.id.button7);
         btn8 = findViewById(R.id.button8);
         btn9 = findViewById(R.id.button9);
-
+        nxt = findViewById(R.id.next);
+        nxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                setFragment((new TileFrag()));
+            }
+        });
         /*
         GRID VIEW - used in Matrix
         btn1    btn2    btn3
@@ -71,7 +82,6 @@ public class MainActivity extends FragmentActivity {
             }
         }
         */
-
 
         Buildbtn.setVisibility(View.INVISIBLE);
         creep_btn.setVisibility(View.INVISIBLE);
@@ -98,7 +108,7 @@ public class MainActivity extends FragmentActivity {
     }
     //TODO Count Should Be Able to Increment Without Player Input
     public void updatePerSecondIncrement(){
-       perSecondIncrement += 1;
+        perSecondIncrement += 1;
     }
 
     public void IncreaseCount(View view) {
@@ -179,9 +189,9 @@ public class MainActivity extends FragmentActivity {
                     break;
                 }
                 else if(Tiles[1] && !Monster[1]) {
-                        placeMonster(monsterID, R.id.button2);
-                        Monster[1] = false;
-                        break;
+                    placeMonster(monsterID, R.id.button2);
+                    Monster[1] = false;
+                    break;
                 }
 
             case(R.id.button3):
@@ -427,5 +437,14 @@ public class MainActivity extends FragmentActivity {
         if(Tiles[8] && !Monster[8])
             btn9.setEnabled(true);
         return monsterID;
+    }
+
+    public void setFragment(Fragment f){
+        FragmentManager fMananger = getSupportFragmentManager();
+        FragmentTransaction ft = fMananger.beginTransaction();
+        ft.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
+        ft.replace(R.id.TileFrame,f);
+        ft.commit();
+
     }
 }
