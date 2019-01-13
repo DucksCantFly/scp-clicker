@@ -37,7 +37,7 @@ public class MainActivity extends FragmentActivity {
     double tileCost = 50;
     double monsterCost = 100; //Further development will call for a vector of ints for various monster costs
     double counter = 0;       //Tap Counter
-    double incrementVal = 1;
+    double incrementVal = 50;
     double perSecondIncrement = 0;
     long timer = System.currentTimeMillis();
 
@@ -157,6 +157,7 @@ public class MainActivity extends FragmentActivity {
             btn8.setEnabled(true);
         if(!Tiles[8])
             btn9.setEnabled(true);
+
     }
 
 
@@ -440,11 +441,13 @@ public class MainActivity extends FragmentActivity {
     }
 
     public void setFragment(Fragment f){
+
         FragmentManager fMananger = getSupportFragmentManager();
         FragmentTransaction ft = fMananger.beginTransaction();
         ft.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
         ft.replace(R.id.TileFrame,f);
         ft.commit();
-
+        btn1.setEnabled(false);
+        btn2.setBackgroundResource(android.R.drawable.btn_default);
     }
 }
